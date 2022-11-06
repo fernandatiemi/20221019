@@ -1,0 +1,70 @@
+<html>
+
+    <head>
+        <title>Calendário Interativo</title>
+        <link rel='stylesheet' type='text/css' href='estilos.css' />
+    </head>
+    
+<body>
+
+<script language="javascript">
+
+var data, ano, mes, dia, corfnt, corfdo;
+
+ano = parseInt(window.prompt("Qual ano?"));
+mes = parseInt(window.prompt("Qual mes?"));
+
+data = new Date();
+data.setDate(1);
+data.setMonth(mes-1);
+data.setFullYear(ano);
+
+document.write("<h1>" + data + "</h1>");
+document.write("<br>");
+
+document.write("<table>");
+
+for(dia=2; dia<=30; ++dia)
+{
+   if (data.getDay()==0)
+     {
+      corfdo="red";
+      corfnt="white";
+     }
+   else
+     {
+      corfdo="white";
+      corfnt="red";
+     }
+   document.write("<tr bgcolor=" + corfdo + ">");
+   document.write("<td width=200 align=center>");
+   document.write("<font face=times new roman size=7 color=" + corfnt + ">" + 
+                  data.getDate() + "/" + 
+                  (data.getMonth()+1) + "/" + 
+                  data.getFullYear() + "</font>");
+   document.write("</td>");
+
+   document.write("<td width=100 align=center>");
+   document.write("<font face=times new roman size=7 color=" + corfnt + ">");
+   switch (data.getDay())
+   {
+     case 0: document.write("Dom"); break;
+     case 1: document.write("Seg"); break;
+     case 2: document.write("Ter"); break;
+     case 3: document.write("Qua"); break;
+     case 4: document.write("Qui"); break;
+     case 5: document.write("Sex"); break;
+     case 6: document.write("Sab"); break;
+   }
+   document.write("</font>");
+   document.write("</td>");
+   document.write("</tr>");
+
+   data.setDate(dia);
+}
+
+document.write("</table>");
+</script>
+</body>
+
+</html>
